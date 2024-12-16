@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Size Measurement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form, .controls {
+            max-width: 500px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .start {
+            background: #007BFF;
+            color: #fff;
+        }
+        .stop {
+            background: #DC3545;
+            color: #fff;
+        }
+        .video-container {
+            text-align: center;
+        }
+        img {
+            width: 640px;
+            height: 360px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Object Size Measurement</h1>
+    <div class="controls">
+        <form method="POST">
+            <input type="text" name="ip_address" placeholder="Enter IP (e.g., 192.168.0.4:8080)" required>
+            <button class="start" type="submit" name="action" value="start">Start</button>
+            <button class="stop" type="submit" name="action" value="stop">Stop</button>
+        </form>
+    </div>
+    <div class="video-container">
+        <h2>Live Feed</h2>
+        {% if video_streaming %}
+        <img src="{{ url_for('video_feed') }}" alt="Video Feed">
+        {% else %}
+        <p>Video feed not started. Enter the IP address and click "Start".</p>
+        {% endif %}
+    </div>
+</body>
+</html>
